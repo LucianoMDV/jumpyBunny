@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /**
  * 1) Menu
@@ -32,7 +33,10 @@ public class GameManager : MonoBehaviour
     // private DaysOfTheWeek currentDay = DaysOfTheWeek.Sunday;
     public GameState currentGameState = GameState.Menu;
     private static GameManager sharedInstance; //singleton
-
+    public Canvas mainMenu;
+    public Canvas gameMenu;
+    public Canvas gameOverMenu;
+    
     private void Awake()
     {
         sharedInstance = this; //singleton
@@ -54,12 +58,15 @@ public class GameManager : MonoBehaviour
     {
         // StartGame();
         currentGameState = GameState.Menu;
+        mainMenu.enabled = true;
+        gameMenu.enabled = false;
+        gameOverMenu.enabled = false;
     }
 
    // Called when player dies
     public void Update()
     {
-        if (currentGameState != GameState.InGame && Input.GetButtonDown("s"))
+        if (currentGameState != GameState.InGame && Input.GetButtonDown("S key"))
         {
             ChangeGameState(GameState.InGame);
             StartGame();
@@ -82,31 +89,25 @@ public class GameManager : MonoBehaviour
 
     void ChangeGameState(GameState newGameState)
     {
-        /* not use this
-        if (newGameState == GameState.Menu)
-        {
-            //Let's load Mainmeny Scene
-        } else if (newGameState == GameState.InGame)
-        {
-            //Unity Scene must show the Real game
-        } else if (newGameState == GameState.GameOver)
-        {
-            //Let's load end of the game scene
-        } else {
-            currentGameState = GameState.Menu;
-        }
-        */
-
         switch (newGameState)
         {
             case GameState.Menu:
                 //Let's load Mainmeny Scene
+                mainMenu.enabled = true;
+                gameMenu.enabled = false;
+                gameOverMenu.enabled = false;
                 break;
             case GameState.InGame:
                 //Unity Scene must show the Real game
+                mainMenu.enabled = false;
+                gameMenu.enabled = true;
+                gameOverMenu.enabled = false;
                 break;
             case GameState.GameOver:
                 //Let's load end of the game scene
+                mainMenu.enabled = false;
+                gameMenu.enabled = false;
+                gameOverMenu.enabled = true;
                 break;
             default:
                 newGameState = GameState.Menu;
