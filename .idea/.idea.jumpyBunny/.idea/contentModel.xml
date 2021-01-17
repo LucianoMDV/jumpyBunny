@@ -7,8 +7,11 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="CameraController.cs" t="Include" />
+          <e p="CameraFollow.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="KillTrigger.cs" t="Include" />
+          <e p="LeaveTrigger.cs" t="Include" />
           <e p="LevelBlock.cs" t="Include" />
           <e p="LevelGenerator.cs" t="Include" />
           <e p="playerController.cs" t="Include" />

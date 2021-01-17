@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         // print("Today is: " + (int) currentDay);
+        LevelGenerator.sharedInstance.createInitialBlock();
         PlayerController.GetInstace().StartGame();
         ChangeGameState(GameState.InGame);
     }
@@ -67,6 +68,8 @@ public class GameManager : MonoBehaviour
     
     public void GameOver()
     {
+        LevelGenerator.sharedInstance.RemoveAllBlocks();
+        // LevelGenerator.sharedInstance.RemoveOldBlock();
         ChangeGameState(GameState.GameOver);
     }
     
