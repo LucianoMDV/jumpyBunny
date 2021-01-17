@@ -10,11 +10,13 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayerMask;
     public Animator animator;
     public float runSpeed = 3.0f;
-    
+
+    private float initialGravity;
     private static PlayerController sharedInstance; //singleton
 
     private Vector3 initialPosition;
     private Vector2 initialVelocity;
+    private const string HIGHEST_SCORE_KEY = "highestScore";
 
     private void Awake()
     {
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
         initialPosition = transform.position;
         initialVelocity = rigidBody.velocity;
         animator.SetBool("isAlive", true);
+        initialGravity = rigidBody.gravityScale;
 
     }
 
@@ -37,7 +40,8 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetBool("isAlive", true);
         transform.position = initialPosition;
-        rigidBody.velocity = new Vector2(0,0);
+        rigidBody.velocity = initialVelocity;
+        rigidBody.gravityScale = initialGravity;
         // GameManager.GetInstace();
     }
 
@@ -86,6 +90,28 @@ public class PlayerController : MonoBehaviour
     public void KillPlayer()
     {
         animator.SetBool("isAlive", false);
+        int highestScore = PlayerPrefs.GetInt(HIGHEST_SCORE_KEY);
+        int currentScore = GetDistance();
+        if (currentScore > highestScore)
+        {
+            PlayerPrefs.SetInt(HIGHEST_SCORE_KEY, currentScore);
+        }
+
+        rigidBody.gravityScale = 0f;
+        rigidBody.velocity = Vector2.zero;
         GameManager.GetInstace().GameOver();
+
+    }
+
+    public int GetDistance()
+    {
+        var distance = (int) Vector2.Distance(initialPosition, transform.position);
+        print("Distance: " + distance);
+        return distance;
+    }
+
+    public int GetMaxScore()
+    {
+        return PlayerPrefs.GetInt(HIGHEST_SCORE_KEY);
     }
 }

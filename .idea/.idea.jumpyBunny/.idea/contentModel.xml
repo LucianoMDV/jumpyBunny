@@ -9,12 +9,15 @@
         <e p="Scripts" t="Include">
           <e p="CameraController.cs" t="Include" />
           <e p="CameraFollow.cs" t="Include" />
+          <e p="Collectable.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
+          <e p="GameOverView.cs" t="Include" />
           <e p="KillTrigger.cs" t="Include" />
           <e p="LeaveTrigger.cs" t="Include" />
           <e p="LevelBlock.cs" t="Include" />
           <e p="LevelGenerator.cs" t="Include" />
           <e p="playerController.cs" t="Include" />
+          <e p="ViewInGame.cs" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Examples &amp; Extras" t="Include">
