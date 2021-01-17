@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 5068320}
   - component: {fileID: 5891808}
   - component: {fileID: 8693200447867391471}
-  - component: {fileID: 38460013124131699}
+  - component: {fileID: 8034857489322529069}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -190,7 +190,7 @@ CircleCollider2D:
   m_Offset: {x: 0.4, y: 0.03}
   serializedVersion: 2
   m_Radius: 0.516
---- !u!114 &38460013124131699
+--- !u!114 &8034857489322529069
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,4 +207,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   animator: {fileID: 9560166}
-  runSpeed: 1
+  runSpeed: 3

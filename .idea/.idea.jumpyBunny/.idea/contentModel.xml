@@ -8,6 +8,9 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="GameManager.cs" t="Include" />
+          <e p="KillTrigger.cs" t="Include" />
+          <e p="LevelBlock.cs" t="Include" />
+          <e p="LevelGenerator.cs" t="Include" />
           <e p="playerController.cs" t="Include" />
         </e>
       </e>
